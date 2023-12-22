@@ -23,8 +23,8 @@ const card =  function() {
 	music = document.getElementById("music");
 	music.preload = "auto";
 
-	console.log("music = " + music);
-	console.log("stage = " + stage);
+	// console.log("music = " + music);
+	// console.log("stage = " + stage);
 	//console.log("smallStarSVG: " + smallStarSVG);
 	setMainStar();
 	createStarField();
@@ -76,7 +76,7 @@ const createStarField = function () {
 		})
 		// let idStr = '#' + stars[i].id + ' .starBG';
 		
-		console.log('Math.randMinMax: '+Math.randMinMax(0.2, 1))
+		// console.log('Math.randMinMax: '+Math.randMinMax(0.2, 1))
 		
 		target.appendChild(stars[i]);
 
@@ -150,6 +150,7 @@ const setTL = function(){
 	tl.from('#fighter', 0.2, {autoAlpha:0}, fighterOn);
 
 	tl.fromTo('#fighter', 3, {scale: 0.27, x:180, ease: "power4.out"}, {scale:4, x:-1200}, fighterOn);
+	tl.to('#fighter', 0.25, {autoAlpha:0}, '-=0.25')
 	tl.to('#landscape', 2, {scale: 3, y:1300, x:-1300})
 	tl.to(['#stars', '#landscape'], 1, {autoAlpha:0})
 	tl.from('#mjcHolder', 1, {autoAlpha:0})
@@ -172,7 +173,7 @@ const writeGreeting = function(){
 	return greeting
 }
 const writeEnd = function(){
-	const greeting = 'Dear ' + getGet("recipient") + ', <br/>Wishing you a very Merry Christmas.<br/>Peace and goodwill to all. Everyone. <br/>Every Single soul, human, animal and plant.<br/>Across the world and universe.<br/>Love,<br/><br/>'+getGet("sender");
+	const greeting = 'Dear ' + getGet("recipient") + ', <br/>Wishing you a very Merry Christmas.<br/>Peace and goodwill to all. Everyone. <br/>Every Single soul, human, animal and plant.<br/>Across the world and universe.<br/> <br/>Love,<br/>'+getGet("sender");
 	return greeting
 }
 
