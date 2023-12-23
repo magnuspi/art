@@ -84,7 +84,7 @@ const createStarField = function() {
         target.appendChild(stars[i]);
 
         TweenMax.set(starBG, { transformOrigin: "50% 50%" })
-        console.log("tv: " + tv);
+        //console.log("tv: " + tv);
         TweenMax.to(tv[i][2], tv[i][0], { scale: tv[i][0], yoyo: true, repeat: -1 });
 
     }
@@ -234,16 +234,20 @@ const updateLink = function() {
     var linkVal = "https://www.magnusp.art/cards/xmas2023/?";
     var recipient = "recipient=" + encodeURI(document.getElementById("recipient").value);
     var sender = "sender=" + encodeURI(document.getElementById("sender").value);
+    if(recipient=="Their Name" || recipient=="" || recipient==" " || recipient==null || recipient=='recipient=') recipient = 'recipient=Human';
+    if(sender=="Their Name" || sender=="" || sender==" " || sender==null || sender=="sender=") sender = 'sender=Humanity';
     document.getElementById("linkText").value = linkVal + recipient + "&" + sender;
+    console.log('recipient: ' + recipient + ' sender: '+sender);
 }
 
 const clearSender = function() {
     document.getElementById("sender").value = '';
-    console.log('clearSender')
+    updateLink();
 }
 
 const clearRecipient = function() {
     document.getElementById("recipient").value = '';
+    updateLink();
 }
 
 const closeForm = function() {
