@@ -49,15 +49,16 @@ body{
 	-ms-user-select: none;
 	user-select: none;
 	text-anchor: middle;
+	background: #02021e;
 }
 
 #intro{
 	cursor: pointer;
-	font-size: 1em;
+	font-size: 1.5em;
 }
 
 #end{
-font-size: 1em;
+font-size: 1.5em;
 }
 
 #cont{

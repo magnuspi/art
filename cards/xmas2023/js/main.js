@@ -22,25 +22,22 @@ const card =  function() {
 	stage = $('#stage');
 	music = document.getElementById("music");
 	music.preload = "auto";
-
-	// console.log("music = " + music);
-	// console.log("stage = " + stage);
-	//console.log("smallStarSVG: " + smallStarSVG);
+	TweenMax.set(['#stage','#stars', "#star", '#topStar', '#twinkle', '#extraTwinkle1', '#extraTwinkle12', '#landscape', '#lsMidHolder', '#lsForeHolder', '#lsBgHolder', "#wm", "#wm1", "#wm1Body", "#wm1Head","#wm","#wm2","#wm2Body","#wm2Head","#wm","#wm3","#wm3Body","#wm3Head", "#wmmjc", '#fighter', '#mjcHolder'], {transformOrigin:"50% 50%"});
 	setMainStar();
 	createStarField();
 	addSVGText(writeGreeting(), 'introText', 'intro');
+	TweenMax.set(['#introText', '#endText'], {transformOrigin:"50% 50%"});
+	TweenMax.set('#introText', {y:'-50'});
 	addSVGText(writeEnd(), 'endText', 'end');
 	$('#intro').addEventListener('click', playCard);
 	TweenMax.set(["#stage", '#cont'], {transformOrigin:"0 0", x:0, y:0});
-	//TweenMax.set('#landscape', {scale: 0.35, y:-460});
-
+	TweenMax.set(["#stage", '#cont'], {transformOrigin:"0 0", x:0, y:0});
 	setTL();
 	tl.pause(0.001);
 }
 
 const setMainStar = function(){
-	TweenMax.set(['#stage','#stars', "#star", '#topStar', '#twinkle', '#extraTwinkle1', '#extraTwinkle12', '#landscape',
-		'#lsMidHolder', '#lsForeHolder', '#lsBgHolder', "#wm", "#wm1", "#wm1Body", "#wm1Head","#wm","#wm2","#wm2Body","#wm2Head","#wm","#wm3","#wm3Body","#wm3Head", "#wmmjc", '#fighter', '#mjcHolder'], {transformOrigin:"50% 50%"});
+	
 	TweenMax.set(['#wm1Zoom', '#wm2Zoom', '#wm3Zoom'], {transformOrigin:"50% 20%"});
 	TweenMax.set(['#topStar'], {transformOrigin:"50% 207.48px"});
 	TweenMax.set("#star", {alpha: 0, scale:0.6});
@@ -61,7 +58,6 @@ const createStarField = function () {
 		starBG.setAttribute("points", smallStarBackSVG);
 		starBG.setAttribute("class", "strokeFillStar");
 
-		//<polygon class=\"strokeFillStar\" points=\"
 		let starFG = document.createElementNS(target.namespaceURI,"polygon");
 		starFG.setAttribute("points", smallStarFrontSVG);
 		starFG.setAttribute("class", "strokeFillStar");
@@ -74,13 +70,9 @@ const createStarField = function () {
 			x : Math.randMinMax(-1280, 1280),
 			y : Math.randMinMax(-320, 1000)
 		})
-		// let idStr = '#' + stars[i].id + ' .starBG';
-		
-		// console.log('Math.randMinMax: '+Math.randMinMax(0.2, 1))
 		
 		target.appendChild(stars[i]);
 
-		// console.log('idStr: ' + idStr);
 		TweenMax.set(starBG, {transformOrigin:"50% 50%"})
 
 		TweenMax.to(starBG, Math.randMinMax(0.3, 1), {scale:Math.randMinMax(0.7, 1.1), yoyo:true, repeat:-1});
@@ -133,14 +125,14 @@ const setTL = function(){
 	tl.to(['#stars', '#landscape', '#wm'], 1, {autoAlpha: 0}, firstFadeOut);
 
 	tl.from('#wm1Zoom', 0.5, {autoAlpha: 0});
-	tl.to('#wm1Zoom', 1.5, {scale:1.1}, '-=0.5');
-	tl.to('#wm1Zoom', 0.5, {autoAlpha: 0}, '+=1');
+	tl.to('#wm1Zoom', 3.5, {scale:1.1}, '-=0.5');
+	tl.to('#wm1Zoom', 0.5, {autoAlpha: 0}, '-=0.5');
 	tl.from('#wm2Zoom', 0.5, {autoAlpha: 0});
-		tl.to('#wm2Zoom', 1.5, {scale:1.1}, '-=0.5');
-	tl.to('#wm2Zoom', 0.5, {autoAlpha: 0}, '+=1');
+		tl.to('#wm2Zoom', 3.5, {scale:1.1}, '-=0.5');
+	tl.to('#wm2Zoom', 0.5, {autoAlpha: 0}, '-=0.5');
 	tl.from('#wm3Zoom', 0.5, {autoAlpha: 0});
-		tl.to('#wm3Zoom', 1.5, {scale:1.1}, '-=0.5');
-	tl.to('#wm3Zoom', 0.5, {autoAlpha: 0}, '+=1');
+		tl.to('#wm3Zoom', 3.5, {scale:1.1}, '-=0.5');
+	tl.to('#wm3Zoom', 0.5, {autoAlpha: 0}, '-=0.5');
 
 	tl.set('#landscape', {y:100, x:-1350, scale:1})
 
@@ -157,7 +149,7 @@ const setTL = function(){
 	tl.from('#mjcHolder', 5, {scale: 0.1})
 	tl.set('#wm', {y:-80})
 	tl.to('#wm', 2, {autoAlpha:1}, '+=2')
-	tl.to(['#wmmjc'], 1, {scale:0.65, y:100})
+	tl.to(['#wmmjc'], 1, {scale:0.55, y:125})
 	tl.from(['#end'], 1, {autoAlpha:0})
 
 }
@@ -173,7 +165,7 @@ const writeGreeting = function(){
 	return greeting
 }
 const writeEnd = function(){
-	const greeting = 'Dear ' + getGet("recipient") + ', <br/>Wishing you a very Merry Christmas.<br/>Peace and goodwill to all. Everyone. <br/>Every Single soul, human, animal and plant.<br/>Across the world and universe.<br/> <br/>Love,<br/>'+getGet("sender");
+	const greeting = 'Dear ' + getGet("recipient") + ', <br/>Wishing you a very Merry Christmas.<br/>Peace and goodwill to all. Everyone. <br/>Every Single soul, human, animal and plant.<br/>Across the world and the Universe.<br/>Love,<br/>'+getGet("sender");
 	return greeting
 }
 
@@ -185,7 +177,6 @@ const writeText = function(text,target){
 		newLine.setAttribute("x", '0');
 		newLine.textContent = lines[i];
 	}
-
 }
 
 const addSVGText = function (text, svg, id){
@@ -197,39 +188,24 @@ const addSVGText = function (text, svg, id){
 	let x = cont.x + cont.width * 0.5;
 	let y = cont.y + cont.height * 0.5;
 
-	// Create the path line
-	let pathElem = document.createElementNS(target.namespaceURI, "path");
-	pathElem.setAttribute("pathLength", 100);
-	pathElem.setAttribute("d", 'M' + cont.x + ' ' + y + 'h'+cont.width);
-	pathElem.id = 'baseline-'+target.id;
-
 	var textElem = document.createElementNS(target.namespaceURI,"text");
 	textElem.setAttribute("x", x);
 	textElem.setAttribute("y", y);
 
-
-
-	// // Centre text horizontally at x,y
-	// textElem.setAttribute("text-anchor", "middle");
-	// // Give it a class that will determine the text size, colour, etc
 	textElem.classList.add("cText");
 
-	// textElem.textContent = t;
 	var lines = text.split('<br/>');
 	for(var i=0;i<lines.length;i++){
 		let newLine = document.createElementNS(target.namespaceURI,"tspan");
 		newLine.setAttribute("dy", '1.5em');
-		 newLine.setAttribute("x", '50%');
+		newLine.setAttribute("x", '50%');
 		newLine.textContent = lines[i];
 		textElem.appendChild(newLine);
 	}
 
 	textElem.id = id;
+
 	target.appendChild(textElem);
-	// // Set the text
-	// 
-	// // Add this text element directly after the label background path
-	// bgPath.after(textElem);
 }
 
 const init = function () {
