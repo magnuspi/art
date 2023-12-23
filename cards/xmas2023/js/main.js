@@ -35,7 +35,8 @@ const card = function() {
     $('#sendButton').addEventListener('click', showForm);
     $('#mailButton').addEventListener('click', showMail);
     $('#closeCont').addEventListener('click', closeForms);
-    $('#closeMail').addEventListener('click', closeForms);
+    $('#closeMail').addEventListener('click', closeForms);clBtn
+    $('#clBtn').addEventListener('click', copyLink, [event]);
     TweenMax.set(["#stage", '#cont'], { transformOrigin: "0 0", x: 0, y: 0 });
     TweenMax.set(["#stage", '#cont'], { transformOrigin: "0 0", x: 0, y: 0 });
     setTL();
@@ -124,7 +125,7 @@ const setTL = function() {
     // tl.set('#fighter', {autoAlpha: 1, /*x:120,*/ scale:0.1},0);
     tl.set('#landscape', { y: 280 }, 0)
     tl.set(['#intro', ], { y: -180 }, 0)
-    tl.set(['#end'], { y: -300 }, 0)
+    tl.set(['#end'], { y: -260 }, 0)
     tl.to('#intro', 2, { autoAlpha: 0 }, 0);
     tl.to('#star', 2, { autoAlpha: 1 }, starIn);
     tl.to('#stars', starZoomD, { scale: 0.35, y: -100, ease: "power2.in" }, starZoom1);
@@ -175,11 +176,11 @@ const playCard = function() {
 }
 
 const writeGreeting = function() {
-    const greeting = 'Dear ' + getGet("recipient") + ', <br/>Please click here to view your Christmas Card.<br/>This presentation uses sound.<br/>Please use headphones or enable a speaker.';
+    const greeting = 'Dear ' + getGet("recipient") + ', <br/>Please click here to view<br/>your Christmas Card.<br/>This presentation uses sound.<br/>Please use headphones<br/>or enable a speaker.';
     return greeting
 }
 const writeEnd = function() {
-    const greeting = 'Dear ' + getGet("recipient") + ', <br/>Wishing you a very Merry Christmas.<br/>Peace and goodwill to all. Everyone. <br/>Every Single soul, human, animal and plant.<br/>Across the world and the Universe.<br/>Love,<br/>' + getGet("sender");
+    const greeting = 'Dear ' + getGet("recipient") + ', <br/>Wishing you a very Merry Christmas.<br/>Peace and goodwill to all. Everyone. <br/>Every single soul, animal and plant.<br/>Across the world and the Universe.<br/>Love,<br/>' + getGet("sender");
     return greeting
 }
 
@@ -226,20 +227,21 @@ const init = function() {
     card();
 }
 
-const copyLink = function() {
+const copyLink = function(event) {
     var copyText = document.getElementById("linkText");
     copyText.select();
     copyText.setSelectionRange(0, 99999);
+    event.preventDefault();
     navigator.clipboard.writeText(copyText.value);
 }
 
 const updateLink = function() {
     var linkVal = "https://www.magnusp.art/cards/xmas2023/?";
-    var recipient = "recipient=" + encodeURI(document.getElementById("recipient").value);
-    var sender = "sender=" + encodeURI(document.getElementById("sender").value);
-    if(recipient=="Their Name" || recipient=="" || recipient==" " || recipient==null || recipient=='recipient=') recipient = 'recipient=Human';
-    if(sender=="Their Name" || sender=="" || sender==" " || sender==null || sender=="sender=") sender = 'sender=Humanity';
-    document.getElementById("linkText").value = linkVal + recipient + "&" + sender;
+    var recipient = encodeURI(document.getElementById("recipient").value);
+    var sender = encodeURI(document.getElementById("sender").value);
+    if(recipient=="Their Name" || recipient=="" || recipient==" " || recipient==null || recipient=='recipient=') recipient = 'Human';
+    if(sender=="Their Name" || sender=="" || sender==" " || sender==null || sender=="sender=") sender = 'Humanity';
+    document.getElementById("linkText").value = linkVal + 'recipient='+recipient + "&" +'sender='+ sender;
     console.log('recipient: ' + recipient + ' sender: '+sender);
 }
 

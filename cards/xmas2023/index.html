@@ -316,8 +316,8 @@
                 <g id="introText"></g>
                 <g id="endText"></g>
                 <g class="engage" data-svg-origin="0 0"><text x="20" y="20" class="cText" id="sendText">
-                        <tspan id="sendButton" class="engage" dy="1.5em" dx="50">Send to a friend.</tspan>
-                        <tspan id="mailButton" class="engage" dy="1.5em" dx="-80">Join the mailing list.</tspan>
+                        <tspan id="sendButton" class="engage" dy="1.5em" dx="100">Send to a friend.</tspan>
+                        <tspan id="mailButton" class="engage" dy="1.5em" dx="-125">Join the mailing list.</tspan>
                     </text></g>
                 <!-- <rect class="blankFill guide" width="640" height="640"/> -->
             </g>
@@ -334,7 +334,7 @@
             <input id="sender" type="text" name="sender" value="Your Name" onkeyup="updateLink()" onclick="clearSender()" />
             <input id="recipient" type="text" name="recipient" value="Their Name" onkeyup="updateLink()" onclick="clearRecipient()" />
             <input id="linkText" type="text" name="url" value="https://www.magnusp.art/cards/xmas2023/?recipient=sender=Your%20Name&Their%20Name" disabled>
-            <p><button onclick="copyLink()">Copy link</button></p>
+            <p><button id="clBtn">Copy link</button></p>
         </form>
     </div>
     <div id="mailForm" class="forms">
