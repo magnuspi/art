@@ -11,7 +11,7 @@ const smallStarFrontSVG = '37.71 18.86 21.37 16.34 21.37 16.34 18.86 0 16.34 16.
 
 const tl = new TimelineMax({paused: true});
 
-Math.random = RNG.prototype.uniform.bind(new RNG('4d6 + 12.16'));
+Math.random = RNG.prototype.uniform.bind(new RNG('4d6 + 12.17'));
 Math.randMinMax=function(t,n,a){var r=t+Math.random()*(n-t)
 return a&&(r=Math.round(r)),r}
 
@@ -51,6 +51,7 @@ const setMainStar = function(){
 
 const createStarField = function () {
 	let target = $('#starField');
+	let tv = new Array();
 	for(var i = 0; i<starsNum; i++){
 		
 		stars[i] = document.createElementNS(target.namespaceURI,"g");
@@ -63,6 +64,11 @@ const createStarField = function () {
 		starFG.setAttribute("class", "strokeFillStar");
 		stars[i].appendChild(starBG);
 		stars[i].appendChild(starFG);
+		tv[i] = new Array();
+		tv[i][0] = Math.randMinMax(0.65, 1);
+		tv[i][1] = Math.randMinMax(0.65, 1.1);
+		tv[i][2] = starBG
+
 		stars[i].id = 'stars' + i;
 		// stars[i].innerHTML = smallStarSVG;
 		TweenMax.set(stars[i], {
@@ -70,12 +76,14 @@ const createStarField = function () {
 			x : Math.randMinMax(-1280, 1280),
 			y : Math.randMinMax(-320, 1000)
 		})
-		
+
+
 		target.appendChild(stars[i]);
 
 		TweenMax.set(starBG, {transformOrigin:"50% 50%"})
+		console.log("tv: " + tv);
+		TweenMax.to(tv[i][2], tv[i][0], {scale:tv[i][0], yoyo:true, repeat:-1});
 
-		TweenMax.to(starBG, Math.randMinMax(0.3, 1), {scale:Math.randMinMax(0.7, 1.1), yoyo:true, repeat:-1});
 	}
 }
 
@@ -109,8 +117,8 @@ const setTL = function(){
 
 	// tl.set('#fighter', {autoAlpha: 1, /*x:120,*/ scale:0.1},0);
 	tl.set('#landscape', {y:280}, 0)
-	tl.set('#end', {y:-280}, 0)
-	
+	tl.set(['#intro',], {y:-220}, 0)
+	tl.set(['#end'], {y:-300}, 0)
 	tl.to('#intro', 2, {autoAlpha: 0}, 0);
 	tl.to('#star', 2, {autoAlpha: 1}, starIn);
 	tl.to('#stars', starZoomD, {scale: 0.35, y:-100, ease: "power2.in"}, starZoom1);
