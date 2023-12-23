@@ -317,17 +317,17 @@
                 <g id="endText"></g>
                 <g class="engage" data-svg-origin="0 0"><text x="20" y="20" class="cText" id="sendText">
                         <tspan id="sendButton" class="engage" dy="1.5em" dx="50">Send to a friend.</tspan>
-                        <!-- <tspan id="listButton" class="engage" dy="1.5em" x="1.5em">Join the mmailing list.</tspan> -->
+                        <tspan id="mailButton" class="engage" dy="1.5em" dx="-80">Join the mailing list.</tspan>
                     </text></g>
                 <!-- <rect class="blankFill guide" width="640" height="640"/> -->
             </g>
         </g>
         </g>
     </svg>
-    <div id="sendForm">
+    <div id="sendForm" class="forms">
         <form>
-            <div id="closeCont">
-                <button id="closeBtn" onclick="copyLink()">close X</button>
+            <div id="closeCont" class="closeCont">
+                <button id="closeBtn">close X</button>
             </div>
             <p class="large">Send this card to somone else.</p>
             <p class="sans"> Enter your name in the "Your Name" field, <br />their name in the "Their Name" field, <br />click on "Copy link" and the paste it anywhere:</p>
@@ -336,6 +336,12 @@
             <input id="linkText" type="text" name="url" value="https://www.magnusp.art/cards/xmas2023/?recipient=sender=Your%20Name&Their%20Name" disabled>
             <p><button onclick="copyLink()">Copy link</button></p>
         </form>
+    </div>
+    <div id="mailForm" class="forms">
+        <div id="closeMail" class="closeCont">
+                <button id="closeBtn" onclick="copyLink()">close X</button>
+        </div>
+        <iframe width="540" height="305" src="https://893e62fa.sibforms.com/serve/MUIFANuqza7PpUc2NuqLgJYU-iaGKXtzqlzRNqrfMU-Z7ITazG91_VZtf3cO97lrfdBpFOTXnLzUkYyXXrSCxvbLnpAZbcofnlXCgITN-4Qt_h6o9uCHsSzogZXEm7hvwp3d_TiRI8jZyA14lUS4v5UJ30KUn6HZ0Serru0eH5Wmif-iIi_M4gx1KZ0z4FYL5xHpsbJ_lR0COEg6" frameborder="0" scrolling="auto" allowfullscreen style="display: block;margin-left: auto;margin-right: auto;max-width: 100%;"></iframe>
     </div>
     <audio id="music">
         <source src="assets/audio.mp3" type="audio/mpeg">

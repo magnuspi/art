@@ -146,12 +146,12 @@ button:hover {
 .engage:hover{
 	fill: #fff;
 }
-#sendForm{
+.forms{
 	padding: 1em;
 	position: absolute;
 	visibility: hidden;
 	background-color: #02021e;
 }
-#closeCont{
+.closeCont{
 	text-align: right;
 }

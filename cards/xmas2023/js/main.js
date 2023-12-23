@@ -33,6 +33,9 @@ const card = function() {
     addSVGText(writeEnd(), 'endText', 'end');
     $('#intro').addEventListener('click', playCard);
     $('#sendButton').addEventListener('click', showForm);
+    $('#mailButton').addEventListener('click', showMail);
+    $('#closeCont').addEventListener('click', closeForms);
+    $('#closeMail').addEventListener('click', closeForms);
     TweenMax.set(["#stage", '#cont'], { transformOrigin: "0 0", x: 0, y: 0 });
     TweenMax.set(["#stage", '#cont'], { transformOrigin: "0 0", x: 0, y: 0 });
     setTL();
@@ -250,9 +253,14 @@ const clearRecipient = function() {
     updateLink();
 }
 
-const closeForm = function() {
-	TweenMax.set('#sendForm', {autoAlpha:0});
+const closeForms = function() {
+	TweenMax.set(['#sendForm', '#mailForm'], {autoAlpha:0});
 }
+
+const showMail = function() {
+	TweenMax.set('#mailForm', {autoAlpha:1});
+}
+
 
 const showForm = function() {
 	TweenMax.set('#sendForm', {autoAlpha:1});
